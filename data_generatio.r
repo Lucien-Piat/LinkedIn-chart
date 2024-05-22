@@ -1,12 +1,9 @@
-
-set.seed(42)
-
 generate_matrix <- function(type, center) {
   # Generate random values
-  random_values <- rnorm(10, mean = center, sd=0.1) 
+  random_values <- rnorm(10, mean = center, sd=3) 
   
   # Create a matrix with type and random values
-  matrix_data <- cbind(rep(type, 10), random_values)
+  matrix_data <- cbind(rep(type, 100), random_values)
   colnames(matrix_data) <- c("Type", "Time")
   
   return(matrix_data)
@@ -20,8 +17,6 @@ data = rbind(generate_matrix('Coffee', 7),
     generate_matrix('Coffee', 11),
     generate_matrix('Coffee', 11),
     generate_matrix('Coffee', 14),
-    generate_matrix('Sleep', 0),
-    generate_matrix('Sleep', 24),
     generate_matrix('R', 14),
     generate_matrix('R', 15),
     generate_matrix('R', 16),
