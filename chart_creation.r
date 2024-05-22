@@ -9,19 +9,22 @@ lapply(list.of.packages,require,character.only=TRUE)
 #font_import()
 #loadfonts(device = "win")
 
-data =read.table("data/data.csv", header = TRUE, sep = ";")
-print(head(data))
+data =read.table("data/data.csv", header = TRUE, sep = ",")
 
-plot <- ggplot(data, aes(x = Time, y = Type, fill = ..x..)) +
-  geom_density_ridges_gradient() +
+
+plot <- ggplot(data, aes(x = Time, y = Type, fill = ..x.. )) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, panel_scaling = TRUE,  gradient_lwd = 0) +
   labs() +
-  scale_fill_viridis(option="magma") +
+  scale_fill_viridis(direction = -1,option="magma") +
   theme_ipsum() +
   theme(
     legend.position="none",
     panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)+
+    theme_ridges(font_size = 13, grid = FALSE)
     
-  )
+  ) +
+  xlim(0, 24)
 
 ggsave(
     "Distribution.png",
