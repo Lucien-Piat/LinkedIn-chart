@@ -30,4 +30,4 @@ data = rbind(generate_matrix('Coffee', 7),
     generate_matrix('Python', 20)
     )
 
-write.csv(data, file = "data/data.csv", row.names = FALSE)
+write.csv(data, file = "data/data_distribution.csv", row.names = FALSE)
